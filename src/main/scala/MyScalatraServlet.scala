@@ -7,6 +7,8 @@ import net.liftweb.json._
 import net.liftweb.mongodb.record.MongoRecord
 import javax.servlet._
 
+import com.github.jasonjackson.User 
+
 import org.slf4j.{LoggerFactory}
 
 class MyScalatraServlet extends ScalatraServlet 
@@ -56,9 +58,9 @@ val logger = LoggerFactory.getLogger(getClass)
 
     contentType = "text/html"
 logger.info("TYPE O USER: " + user.getClass.getSimpleName)
-logger.info("TYPE MAN OF: " + manOf(user))
-    //templateEngine.layout("/WEB-INF/views/loggedin.scaml", Map("user" -> user))
-    layoutTemplate("loggedin.scaml", ("layout" -> "/WEB-INF/layouts/default.scaml"), ("user" -> user))
+//logger.info("TYPE MAN OF: " + manOf(user))
+    templateEngine.layout("/WEB-INF/views/loggedin.scaml", Map("user" -> user))
+    //layoutTemplate("loggedin.scaml", ("layout" -> "/WEB-INF/layouts/default.scaml"), ("user" -> user))
   }
 
   get("/register") {
@@ -112,7 +114,7 @@ logger.info("TYPE MAN OF: " + manOf(user))
 
 
 
-def manOf[T: Manifest](t: T): Manifest[T] = manifest[T]
+//def manOf[T: Manifest](t: T): Manifest[T] = manifest[T]
 
 
 

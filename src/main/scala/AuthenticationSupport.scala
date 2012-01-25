@@ -5,6 +5,8 @@ import org.scalatra.auth.{ScentrySupport, ScentryConfig}
 import org.scalatra.{CookieSupport, ScalatraKernel, CookieOptions, Cookie}
 import org.slf4j.{LoggerFactory}
 
+import com.github.jasonjackson.User 
+
 trait AuthenticationSupport extends ScentrySupport[User] with BasicAuthSupport[User] { self: ScalatraKernel =>
 
   val logger = LoggerFactory.getLogger(getClass)

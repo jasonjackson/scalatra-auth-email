@@ -6,6 +6,7 @@ import javax.servlet.http.{Cookie ⇒ ServletCookie}
 import net.liftweb.common.{Box, Empty, Failure, Full}
 import org.slf4j.{LoggerFactory}
 
+import com.github.jasonjackson.User 
 
 /**
  * Authentication strategy to authenticate a user from a cookie.
