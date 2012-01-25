@@ -1,0 +1,27 @@
+-@ val error: String
+%h1 Registration 
+%div{:style => "color: #F00;"}
+  %p= error
+%div.login_box
+  %form{ :method => "post", :action => "/register" }
+    %div.login_row_label
+      %label{ :for => "userName"} Name:
+    %div.login_row_input
+      %input{ :type => "text", :name => "userName" }
+    %div.login_row_label
+      %label{ :for => "userEmail"} Email:
+    %div.login_row_input
+      %input{ :type => "text", :name => "userEmail", :value => "your@email.com" }
+    %div.login_row_label
+      %label{ :for => "password"} Password:
+    %div.login_row_input
+      %input{ :type => "password", :name => "password" }
+    %div.login_row_label
+      %label{ :for => "rememberMe"} Remember me:
+    %div.login_row_input
+      %input{ :type => "checkbox", :name => "rememberMe", :value => "true" }
+    %div.login_row_label
+      &nbsp;
+    %div.login_row_input
+      %input{ :type => "submit", :name => "submit", :value => "submit" }
+

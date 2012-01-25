@@ -12,6 +12,32 @@ body, textarea, input {
   font-family: Verdana, Helvetica, Arial, sans-serif;
   color: #2d2b3d;
 }
+
+
+/*  Forms  */
+
+.login_box {
+  /* border: 1px solid black; */
+  width: 310px;
+  padding: 50px 50px 50px 50px;
+}
+
+.login_row_label {
+  float: left;
+  width: 100px;
+  /* border: 1px solid red; */
+}
+
+.login_row_input {
+  float: left;
+  width: 200px;
+  /* border: 1px solid green; */
+}
+
+
+
+
+/*
 #container {
   text-align:center;
 }
@@ -38,3 +64,5 @@ body, textarea, input {
   width: 740px;
   padding: 30px 40px 20px 40px;
 }
+*/
+
