@@ -1,4 +1,4 @@
-package com.github.jasonjackson.User {
+package com.github.jasonjackson {
 
   import java.util.regex.Pattern
   import net.liftweb.mongodb.record._
