@@ -19,12 +19,13 @@ package com.github.jasonjackson {
   
     object username extends StringField(this, 200)
     object password extends StringField(this, 200)
+    object email extends StringField(this, 200)
     object rememberMe extends StringField(this, 200)
   
     def userIdAsString: String = id.toString
   
     def login(u: String, p: String): Option[User] = {
-      val usr = User.findAll(("username" -> u) ~ ("password" -> p))
+      val usr = User.findAll(("email" -> u) ~ ("password" -> p))
       if(usr.length > 0){
         val tmp = Some(usr.head)
         updateRememberMe(tmp)

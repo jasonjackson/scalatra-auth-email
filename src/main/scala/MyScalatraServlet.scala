@@ -18,7 +18,7 @@ class MyScalatraServlet extends ScalatraServlet
   {
 
   override def initialize(config: ServletConfig): Unit = {
-    MongoDB.defineDb(DefaultMongoIdentifier, MongoAddress(MongoHost("127.0.0.1", 27017), "scalatra-auth"))
+    MongoDB.defineDb(DefaultMongoIdentifier, MongoAddress(MongoHost("127.0.0.1", 27017), "users"))
 val logger = LoggerFactory.getLogger(getClass)    
     super.initialize(config)
   }
@@ -72,6 +72,7 @@ logger.info("TYPE O USER: " + user.getClass.getSimpleName)
   post("/register") {
     val u = User.createRecord
       .username(params("userName"))
+      .email(params("userEmail"))
       .password(params("password"))
 
     //save
