@@ -13,7 +13,7 @@ import org.slf4j.{LoggerFactory}
 import com.github.jasonjackson.User 
 
 /**
- * Authentication strategy to authenticate a user from a username (or email) and password combination.
+ * Authentication strategy to authenticate a user from an email address and password combination.
  */
 class UserPasswordStrategy(protected val app: ScalatraKernel)
   extends ScentryStrategy[User]
@@ -21,7 +21,7 @@ class UserPasswordStrategy(protected val app: ScalatraKernel)
   
   val logger = LoggerFactory.getLogger(getClass)
 
-  private def login = app.params.get("userName")
+  private def login = app.params.get("userEmail")
   private def password = app.params.get("password")
 
   private def remoteAddress = {
