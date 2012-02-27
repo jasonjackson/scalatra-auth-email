@@ -8,6 +8,8 @@ scalaVersion := "2.9.1"
 
 scalacOptions += "-deprecation"
 
+scalacOptions += "-unchecked"
+
 scalacOptions += "-Xcheckinit"
 
 seq(webSettings :_*)

@@ -14,6 +14,8 @@ package com.github.jasonjackson {
   import java.security.SecureRandom
   import java.util.Date
   
+  import org.slf4j.{LoggerFactory}
+
   class User extends MongoRecord[User] with MongoId[User] {
     def meta = User
   
@@ -21,9 +23,13 @@ package com.github.jasonjackson {
     object password extends StringField(this, 200)
     object email extends StringField(this, 200)
     object rememberMe extends StringField(this, 200)
+    object validated extends BooleanField(this)
+    object validation_code extends StringField(this, 50)
   
     def userIdAsString: String = id.toString
   
+    val logger = LoggerFactory.getLogger(getClass)
+
     def login(u: String, p: String): Option[User] = {
       val usr = User.findAll(("email" -> u) ~ ("password" -> p))
       if(usr.length > 0){
@@ -35,7 +41,27 @@ package com.github.jasonjackson {
         None
       }
     }
-  
+
+    def validateUser(s: String): Option[User] = {
+      val usr = User.findAll(("validation_code" -> s)) 
+      if(usr.length > 0){
+        User.update(("validation_code" -> s), ("$set" -> ("validated" -> true)))
+        val tmp = Some(usr.head)
+        tmp
+      }else{
+        None
+      }
+    }
+ 
+    def isValidated(u: String, p: String) : Boolean = {
+      val usr = User.findAll(("email" -> u) ~ ("password" -> p))
+      if (usr.head.validated.toString == "true"){
+        return true
+      }else{
+        return false
+      }
+    }
+
     def updateRememberMe(u: Option[User]) {
       val dt = new Date()
       u match {

@@ -38,7 +38,6 @@ trait AuthenticationSupport extends ScentrySupport[User] with BasicAuthSupport[U
   def redirectIfAuthenticated {
     if (isAuthenticated) {
       logger.info("Auth: isAuth redirect["+scentryConfig.returnTo+"]")
-      //redirect(scentryConfig.returnTo)
       redirect("/loggedin")
     }
   }
