@@ -54,7 +54,7 @@ package com.github.jasonjackson {
     }
  
     def isValidated(u: String, p: String) : Boolean = {
-      val usr = User.findAll(("email" -> u) ~ ("password" -> p))
+      val usr = User.findAll(("email" -> u) ~ ("password" -> p) ~ ("validated" -> true))
       if (usr.head.validated.toString == "true"){
         return true
       }else{
